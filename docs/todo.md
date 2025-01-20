@@ -6,3 +6,7 @@
 - Accesses? (bitbucket repo, azure)
 - Deployment Pipeline?
 - Live dev env?
+
+## Tasks:
+
+- [ ] Add the footer component docs

@@ -592,6 +592,7 @@ export interface Form {
  * via the `definition` "HeroBlock".
  */
 export interface HeroBlock {
+  heading?: string | null;
   title?: {
     root: {
       type: string;
@@ -607,7 +608,7 @@ export interface HeroBlock {
     };
     [k: string]: unknown;
   } | null;
-  description?: {
+  description: {
     root: {
       type: string;
       children: {
@@ -621,10 +622,11 @@ export interface HeroBlock {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
-  image?: (string | null) | Media;
-  buttonText?: string | null;
-  buttonLink?: string | null;
+  };
+  image: string | Media;
+  imagePosition?: ('right' | 'left') | null;
+  buttonText: string;
+  buttonLink: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'heroBlock';
@@ -929,9 +931,11 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "HeroBlock_select".
  */
 export interface HeroBlockSelect<T extends boolean = true> {
+  heading?: T;
   title?: T;
   description?: T;
   image?: T;
+  imagePosition?: T;
   buttonText?: T;
   buttonLink?: T;
   id?: T;
