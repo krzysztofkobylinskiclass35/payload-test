@@ -8,7 +8,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { HeroBlock } from '@/blocks/Hero/Component'
+import { SummaryBlock } from '@/blocks/SummaryBlock/Component'
 import { TypedLocale } from 'payload'
 
 const blockComponents = {
@@ -17,7 +17,7 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  heroBlock: HeroBlock,
+  summaryBlock: SummaryBlock,
 }
 
 export const RenderBlocks: React.FC<{

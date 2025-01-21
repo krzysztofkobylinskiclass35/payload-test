@@ -122,7 +122,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | HeroBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | SummaryBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -589,9 +589,9 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroBlock".
+ * via the `definition` "SummaryBlock".
  */
-export interface HeroBlock {
+export interface SummaryBlock {
   heading?: string | null;
   title?: {
     root: {
@@ -629,7 +629,7 @@ export interface HeroBlock {
   buttonLink: string;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'heroBlock';
+  blockType: 'summaryBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -825,7 +825,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        heroBlock?: T | HeroBlockSelect<T>;
+        summaryBlock?: T | SummaryBlockSelect<T>;
       };
   meta?:
     | T
@@ -928,9 +928,9 @@ export interface FormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroBlock_select".
+ * via the `definition` "SummaryBlock_select".
  */
-export interface HeroBlockSelect<T extends boolean = true> {
+export interface SummaryBlockSelect<T extends boolean = true> {
   heading?: T;
   title?: T;
   description?: T;

@@ -1,8 +1,8 @@
 import { Block } from 'payload'
 
-export const HeroBlock: Block = {
-  slug: 'heroBlock',
-  interfaceName: 'HeroBlock',
+export const SummaryBlock: Block = {
+  slug: 'summaryBlock',
+  interfaceName: 'SummaryBlock',
   fields: [
     {
       name: 'heading',
@@ -55,7 +55,7 @@ export const HeroBlock: Block = {
     },
   ],
   labels: {
-    singular: 'Hero Block',
-    plural: 'Hero Blocks',
+    singular: 'Summary Block',
+    plural: 'Summary Blocks',
   },
 }

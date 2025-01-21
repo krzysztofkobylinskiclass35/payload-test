@@ -8,7 +8,7 @@ import { Media as MediaComponent } from '@/components/Media'
 
 import { cn } from '@/utilities/ui'
 
-type Props = Extract<Page['layout'][0], { blockType: 'hero' }> & {
+type Props = Extract<Page['layout'][0], { blockType: 'summaryBlock' }> & {
   heading?: string
   title?: string
   description: string
@@ -18,7 +18,7 @@ type Props = Extract<Page['layout'][0], { blockType: 'hero' }> & {
   imagePosition: 'right' | 'left'
 }
 
-export const HeroBlock: React.FC<Props> = ({
+export const SummaryBlock: React.FC<Props> = ({
   heading,
   title,
   description,
