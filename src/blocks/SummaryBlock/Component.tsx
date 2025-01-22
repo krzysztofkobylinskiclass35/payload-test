@@ -44,7 +44,6 @@ export const SummaryBlock: React.FC<Props> = ({
               size="lg"
               url={buttonLink}
               label={buttonText}
-              newTab={true}
               appearance="secondary"
             />
           )}

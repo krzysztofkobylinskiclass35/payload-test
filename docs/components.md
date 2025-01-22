@@ -17,14 +17,14 @@
 - `buttonText: text`
 - `buttonLink: text`
 
-## Stats block
+## Info Cards block
 
-- it will contain the blocks with numbers and descriptions
+It will contain a set of simple content cards with a title and description (the image is optional)
 
 ##### Props
 
 - `heading: string`
-- `stats: array ({ number: number, label: text, image: upload })`
+- `items: array ({ title: text, description: text, image?: upload })`
 
 ## Media block
 
@@ -39,10 +39,10 @@
 
 - `content: richText`
 
-## Media Text block
+## Shifted Media Content block
 
-- it will contain context, consisting of the title, description, button + link
-- the image block will be a simple image shifted to the right
+- it will contain a layout with text on the left side and a shifted image on the right
+- there will be a button with a link
 
 ##### Props
 
@@ -69,3 +69,64 @@ It will contain:
 - `apiDocsButtonLabel: text`
 - `apiDocsLink: link`
 - `loginLink: link`
+
+
+## Content Grid block
+
+It will contain a set of large image-based cards with titles and descriptions
+
+##### Props
+
+- `items: array` (`title: text`, `description: text`, `image: upload`)
+
+
+## Tabs with Summary block
+
+- it will contain a set of tabs with a Summary block inside each
+- the Summary block will have a title, description, button with a link and an image
+
+##### Props
+
+- `heading: text`
+- `tabs: array` (`title: text`, `summary: { title: richText, description: richText, buttonText: text, buttonLink: text, image: upload }`)
+
+
+## Footer Call to Action block
+
+It will contain a title and buttons with links
+
+##### Props
+
+- `title: richText`
+- `buttons: array` (`text: text`, `link: link`, `buttonStyle: select ("primary" | "secondary")`)
+
+
+## Footer Navigation block
+
+It will contain a set of links to pages with some anchors and a language switcher
+
+##### Props
+
+- `links: array` (`title: text`, `link: link`)
+- `locales: array`
+
+
+## Footer Copyright block
+
+It will contain a copyright text and links to social media
+
+##### Props
+
+- `copyrightText: text`
+- `socialMediaLinks: array` (`icon: upload`, `link: link`)
+
+
+## Footer Multi Section block
+
+It will contain a Footer Call to Action, Footer Navigation and Footer Copyright blocks
+
+##### Props
+
+- `callToAction: { title: richText, buttons: array }`
+- `navigation: { links: array, locales: array }`
+- `copyright: { text: text, socialMediaLinks: array }`
