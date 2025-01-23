@@ -92,7 +92,8 @@ export default {
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['Poppins', 'var(--font-geist-sans)'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
@@ -113,6 +114,10 @@ export default {
               fontSize: '4rem',
               fontWeight: 'normal',
               marginBottom: '0.25em',
+            },
+            strong: {
+              color: '#0027f9',
+              fontWeight: 700,
             },
           },
         },

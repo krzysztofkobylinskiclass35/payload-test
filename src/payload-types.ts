@@ -624,9 +624,24 @@ export interface SummaryBlock {
     [k: string]: unknown;
   };
   image: string | Media;
-  imagePosition?: ('right' | 'left') | null;
-  buttonText: string;
-  buttonLink: string;
+  imagePosition?: ('left' | 'right') | null;
+  actionButton: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?: {
+        relationTo: 'pages';
+        value: string | Page;
+      } | null;
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+    };
+    id?: string | null;
+  }[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'summaryBlock';
@@ -936,8 +951,21 @@ export interface SummaryBlockSelect<T extends boolean = true> {
   description?: T;
   image?: T;
   imagePosition?: T;
-  buttonText?: T;
-  buttonLink?: T;
+  actionButton?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
