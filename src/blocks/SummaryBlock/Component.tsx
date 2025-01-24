@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { Page, Media } from '@/payload-types'
+import type { Page, SummaryBlock as SummaryBlockProps } from '@/payload-types'
 
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
@@ -8,22 +8,13 @@ import { Media as MediaComponent } from '@/components/Media'
 
 import { cn } from '@/utilities/ui'
 
-type Props = Extract<Page['layout'][0], { blockType: 'summaryBlock' }> & {
-  heading?: string
-  title?: string
-  description: string
-  buttonText: string
-  buttonLink: string
-  image: Media
-  imagePosition: 'right' | 'left'
-}
+type Props = Extract<Page['layout'][0], { blockType: 'summaryBlock' }> & SummaryBlockProps
 
 export const SummaryBlock: React.FC<Props> = ({
   heading,
   title,
   description,
-  buttonText,
-  buttonLink,
+  actionButton,
   image,
   imagePosition,
 }) => {
@@ -31,21 +22,26 @@ export const SummaryBlock: React.FC<Props> = ({
     <div className="container flex flex-col gap-12">
       {heading && <h1 className="text-7xl">{heading}</h1>}
       <div className={cn('flex gap-4', imagePosition === 'left' && 'flex-row-reverse')}>
-        <div className="lg:min-h-[600px] lg:w-1/2 w-full rounded-md bg-card px-12 py-8 flex flex-col justify-between items-start">
+        <div className="lg:min-h-[600px] lg:w-1/2 w-full rounded-md bg-card p-12 flex flex-col justify-between items-start">
           <div className="flex flex-col gap-4 [&>*]:mx-0">
-            {title && <RichText className="text-7xl" content={title} enableGutter={false} />}
+            {title && (
+              <p className="text-7xl font-medium">
+                <span className="text-heading">{title.regularText}</span>
+                <span className="text-primary">{title.highlightedText}</span>
+                {title.accentText && <span className="text-accent">{title.accentText}</span>}
+              </p>
+            )}
             {description && (
-              <RichText className="mb-0 text-xl" content={description} enableGutter={false} />
+              <RichText
+                className="mb-0 text-base text-xl"
+                content={description}
+                enableGutter={false}
+              />
             )}
           </div>
-          {buttonLink && buttonText && (
-            <CMSLink
-              className="mt-4 px-8 py-6 bg-black text-[#0B1547] text-xl rounded-full bg-gradient-to-t from-[#F9C32F] to-[#FFE08B] hover:bg-gradient-to-b hover:from-[#FFE08B] hover:to-[#F9C32F] hover:via-[#FFE08B]"
-              size="lg"
-              url={buttonLink}
-              label={buttonText}
-              appearance="secondary"
-            />
+          {actionButton.map(
+            ({ link }) =>
+              link.reference && link.label && <CMSLink key={link.type} size="lg" {...link} />,
           )}
         </div>
         <div className="relative lg:w-1/2 w-full">

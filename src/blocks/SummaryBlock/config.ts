@@ -1,3 +1,4 @@
+import { linkGroup } from '@/fields/linkGroup'
 import { Block } from 'payload'
 
 export const SummaryBlock: Block = {
@@ -11,8 +12,23 @@ export const SummaryBlock: Block = {
     },
     {
       name: 'title',
-      type: 'richText',
-      localized: true,
+      type: 'group',
+      fields: [
+        {
+          name: 'regularText',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'highlightedText',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'accentText',
+          type: 'text',
+        },
+      ],
     },
     {
       name: 'description',
@@ -32,27 +48,23 @@ export const SummaryBlock: Block = {
       defaultValue: 'right',
       options: [
         {
-          label: 'On the right',
-          value: 'right',
-        },
-        {
           label: 'On the left',
           value: 'left',
         },
+        {
+          label: 'On the right',
+          value: 'right',
+        },
       ],
     },
-    {
-      name: 'buttonText',
-      type: 'text',
-      localized: true,
+    linkGroup({
+      name: 'actionButton',
+      appearances: ['default', 'outline'],
       required: true,
-    },
-    {
-      name: 'buttonLink',
-      type: 'text',
-      localized: true,
-      required: true,
-    },
+      overrides: {
+        maxRows: 1,
+      },
+    }),
   ],
   labels: {
     singular: 'Summary Block',
