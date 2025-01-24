@@ -25,10 +25,18 @@ export const SummaryBlock: React.FC<Props> = ({
         <div className="lg:min-h-[600px] lg:w-1/2 w-full rounded-md bg-card p-12 flex flex-col justify-between items-start">
           <div className="flex flex-col gap-4 [&>*]:mx-0">
             {title && (
-              <RichText className="text-7xl font-medium" content={title} enableGutter={false} />
+              <p className="text-7xl font-medium">
+                <span className="text-heading">{title.regularText}</span>
+                <span className="text-primary">{title.highlightedText}</span>
+                {title.accentText && <span className="text-accent">{title.accentText}</span>}
+              </p>
             )}
             {description && (
-              <RichText className="mb-0 text-xl" content={description} enableGutter={false} />
+              <RichText
+                className="mb-0 text-base text-xl"
+                content={description}
+                enableGutter={false}
+              />
             )}
           </div>
           {actionButton.map(

@@ -53,10 +53,10 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
+        heading: '#0b1547',
+        base: '#000000',
+        primary: '#0027f9',
+        accent: '#f9c32f',
         background: 'hsl(var(--background))',
         border: 'hsl(var(--border))',
         card: {
@@ -76,10 +76,6 @@ export default {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
-        },
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
         },
         ring: 'hsl(var(--ring))',
         secondary: {
@@ -114,10 +110,6 @@ export default {
               fontSize: '4rem',
               fontWeight: 'normal',
               marginBottom: '0.25em',
-            },
-            strong: {
-              color: '#0027f9',
-              fontWeight: 700,
             },
           },
         },

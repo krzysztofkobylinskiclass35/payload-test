@@ -12,8 +12,23 @@ export const SummaryBlock: Block = {
     },
     {
       name: 'title',
-      type: 'richText',
-      localized: true,
+      type: 'group',
+      fields: [
+        {
+          name: 'regularText',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'highlightedText',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'accentText',
+          type: 'text',
+        },
+      ],
     },
     {
       name: 'description',
