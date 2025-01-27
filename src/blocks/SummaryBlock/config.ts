@@ -1,4 +1,9 @@
 import { linkGroup } from '@/fields/linkGroup'
+import {
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
 export const SummaryBlock: Block = {
@@ -35,6 +40,13 @@ export const SummaryBlock: Block = {
       type: 'richText',
       localized: true,
       required: true,
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
+      }),
     },
     {
       name: 'image',

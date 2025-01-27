@@ -19,6 +19,13 @@ type CMSLinkType = {
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
+  addProtocol?: boolean
+}
+
+const addProtocolToUrl = (url?: string | null): string => {
+  if (!url) return ''
+  const linkIncludesProtocol = url.startsWith('http://') || url.startsWith('https://')
+  return linkIncludesProtocol ? url : `https://${url}`
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -32,18 +39,21 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     reference,
     size: sizeFromProps,
     url,
+    addProtocol = false,
   } = props
+
+  const fullUrl = addProtocol ? addProtocolToUrl(url) : url
 
   const href =
     type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
       ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${
           reference.value.slug
         }`
-      : url
+      : fullUrl
 
   if (!href) return null
 
-  const finalHref = href || url || ''
+  const finalHref = href || fullUrl || ''
   const Link = finalHref.startsWith('/admin') ? NextLink : i18nLink
 
   const size = appearance === 'link' ? 'clear' : sizeFromProps

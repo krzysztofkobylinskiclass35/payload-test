@@ -55,16 +55,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
       <div className="flex gap-6 items-center">
         <HeaderNav header={header} />
         {header.headerButtons &&
-          header.headerButtons.map(({ link }) => {
-            const linkIncludesProtocol =
-              link.url && (link.url.startsWith('http://') || link.url.startsWith('https://'))
-            const url = linkIncludesProtocol ? link.url : `https://${link.url}`
-
-            return (
+          header.headerButtons.map(
+            ({ link }) =>
               (link.reference || link.url) &&
-              link.label && <CMSLink key={link.type} size="sm" {...link} url={url} />
-            )
-          })}
+              link.label && <CMSLink key={link.type} size="sm" {...link} addProtocol />,
+          )}
       </div>
     </header>
   )
