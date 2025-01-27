@@ -1323,6 +1323,22 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  subHeading?: string | null;
+  mainHeading: string;
+  actionButton: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
   navItems?:
     | {
         link: {
@@ -1334,6 +1350,22 @@ export interface Footer {
           } | null;
           url?: string | null;
           label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  mediaLinks?:
+    | {
+        media?: (string | null) | Media;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          url?: string | null;
         };
         id?: string | null;
       }[]
@@ -1385,6 +1417,18 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  subHeading?: T;
+  mainHeading?: T;
+  actionButton?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
   navItems?:
     | T
     | {
@@ -1396,6 +1440,21 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        id?: T;
+      };
+  copyrightText?: T;
+  mediaLinks?:
+    | T
+    | {
+        media?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
             };
         id?: T;
       };

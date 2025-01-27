@@ -10,6 +10,21 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      name: 'subHeading',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'mainHeading',
+      type: 'text',
+      localized: true,
+      required: true,
+    },
+    link({
+      name: 'actionButton',
+      appearances: ['default', 'outline'],
+    }),
+    {
       name: 'navItems',
       type: 'array',
       fields: [
@@ -18,6 +33,26 @@ export const Footer: GlobalConfig = {
         }),
       ],
       maxRows: 6,
+    },
+    {
+      name: 'copyrightText',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'mediaLinks',
+      type: 'array',
+      fields: [
+        {
+          name: 'media',
+          type: 'upload',
+          relationTo: 'media',
+        },
+        link({
+          appearances: false,
+          disableLabel: true,
+        }),
+      ],
     },
   ],
   hooks: {
