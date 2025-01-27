@@ -13,7 +13,7 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
   // const navItems = footer?.navItems || []
 
   return (
-    <footer className="container px-0 text-white">
+    <footer className="container text-white">
       <div className="h-[400px] rounded-md px-8 pb-10 bg-heading flex flex-col justify-end">
         <div className="flex flex-col gap-4 justify-center">
           {footer?.subHeading && (
