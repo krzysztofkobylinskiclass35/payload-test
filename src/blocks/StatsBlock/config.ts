@@ -1,14 +1,11 @@
+import { titleWithHighlights } from '@/fields/titleWithHighlights'
 import { Block } from 'payload'
 
 export const StatsBlock: Block = {
   slug: 'statsBlock',
   interfaceName: 'StatsBlock',
   fields: [
-    {
-      name: 'heading',
-      type: 'text',
-      localized: true,
-    },
+    titleWithHighlights(),
     {
       name: 'cards',
       type: 'array',

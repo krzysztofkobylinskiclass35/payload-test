@@ -1,4 +1,5 @@
 import { linkGroup } from '@/fields/linkGroup'
+import { titleWithHighlights } from '@/fields/titleWithHighlights'
 import {
   FixedToolbarFeature,
   InlineToolbarFeature,
@@ -15,26 +16,7 @@ export const SummaryBlock: Block = {
       type: 'text',
       localized: true,
     },
-    {
-      name: 'title',
-      type: 'group',
-      fields: [
-        {
-          name: 'regularText',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'highlightedText',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'accentText',
-          type: 'text',
-        },
-      ],
-    },
+    titleWithHighlights(),
     {
       name: 'description',
       type: 'richText',

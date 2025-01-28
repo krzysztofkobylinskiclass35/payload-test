@@ -641,7 +641,11 @@ export interface SummaryBlock {
  * via the `definition` "StatsBlock".
  */
 export interface StatsBlock {
-  heading?: string | null;
+  title: {
+    regularText: string;
+    highlightedText: string;
+    accentText?: string | null;
+  };
   cards: {
     category: string;
     cardName: string;
@@ -988,7 +992,13 @@ export interface SummaryBlockSelect<T extends boolean = true> {
  * via the `definition` "StatsBlock_select".
  */
 export interface StatsBlockSelect<T extends boolean = true> {
-  heading?: T;
+  title?:
+    | T
+    | {
+        regularText?: T;
+        highlightedText?: T;
+        accentText?: T;
+      };
   cards?:
     | T
     | {
