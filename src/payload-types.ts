@@ -122,7 +122,16 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | SummaryBlock | StatsBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | SummaryBlock
+    | StatsBlock
+    | TabsWithPreview
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -659,6 +668,41 @@ export interface StatsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabsWithPreview".
+ */
+export interface TabsWithPreview {
+  title: {
+    regularText: string;
+    highlightedText: string;
+    accentText?: string | null;
+  };
+  tabs: {
+    tabTitle: string;
+    contentImage: string | Media;
+    contentTitle: string;
+    contentDescription: string;
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?: {
+        relationTo: 'pages';
+        value: string | Page;
+      } | null;
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'tabsWithPreview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -853,6 +897,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         summaryBlock?: T | SummaryBlockSelect<T>;
         statsBlock?: T | StatsBlockSelect<T>;
+        tabsWithPreview?: T | TabsWithPreviewSelect<T>;
       };
   meta?:
     | T
@@ -1006,6 +1051,40 @@ export interface StatsBlockSelect<T extends boolean = true> {
         cardName?: T;
         description?: T;
         bgImage?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabsWithPreview_select".
+ */
+export interface TabsWithPreviewSelect<T extends boolean = true> {
+  title?:
+    | T
+    | {
+        regularText?: T;
+        highlightedText?: T;
+        accentText?: T;
+      };
+  tabs?:
+    | T
+    | {
+        tabTitle?: T;
+        contentImage?: T;
+        contentTitle?: T;
+        contentDescription?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
         id?: T;
       };
   id?: T;

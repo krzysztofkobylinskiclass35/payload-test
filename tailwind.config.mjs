@@ -50,7 +50,7 @@ export default {
         primary: '#0027f9',
         accent: '#f9c32f',
         border: '#bfbfbf',
-        background: '#f0f0f0',
+        background: '#efefef',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
