@@ -22,7 +22,7 @@ export const SummaryBlock: React.FC<Props> = ({
     <div className="container flex flex-col gap-12">
       {heading && <h1 className="text-7xl">{heading}</h1>}
       <div className={cn('flex gap-4', imagePosition === 'left' && 'flex-row-reverse')}>
-        <div className="lg:min-h-[600px] lg:w-1/2 w-full rounded-md bg-card p-12 flex flex-col justify-between items-start">
+        <div className="lg:min-h-[600px] lg:w-1/2 w-full rounded-md bg-white p-12 flex flex-col justify-between items-start">
           <div className="flex flex-col gap-4 [&>*]:mx-0">
             {title && (
               <p className="text-7xl font-medium">
