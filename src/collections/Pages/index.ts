@@ -1,4 +1,4 @@
-import type { CollectionConfig, TypedLocale } from 'payload'
+import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { SummaryBlock } from '@/blocks/SummaryBlock/config'
 import { StatsBlock } from '@/blocks/StatsBlock/config'
 import { TabsWithPreview } from '@/blocks/TabsWithPreview/config'
+import { BentoGrid } from '@/blocks/BentoGrid/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
@@ -71,11 +72,13 @@ export const Pages: CollectionConfig = {
           label: 'Hero',
         },
         {
+          label: 'Content',
           fields: [
             {
               name: 'layout',
               type: 'blocks',
               localized: true,
+              required: true,
               blocks: [
                 CallToAction,
                 Content,
@@ -85,11 +88,10 @@ export const Pages: CollectionConfig = {
                 SummaryBlock,
                 StatsBlock,
                 TabsWithPreview,
+                BentoGrid,
               ],
-              required: true,
             },
           ],
-          label: 'Content',
         },
         {
           name: 'meta',

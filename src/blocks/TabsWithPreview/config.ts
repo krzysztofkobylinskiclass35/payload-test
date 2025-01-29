@@ -34,7 +34,7 @@ export const TabsWithPreview: Block = {
           type: 'text',
           required: true,
         },
-        link(),
+        link({ appearances: false }),
       ],
     },
   ],
