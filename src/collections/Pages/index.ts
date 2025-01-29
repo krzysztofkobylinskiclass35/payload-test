@@ -9,7 +9,7 @@ import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { SummaryBlock } from '@/blocks/SummaryBlock/config'
 import { StatsBlock } from '@/blocks/StatsBlock/config'
-
+import { TabsWithPreview } from '@/blocks/TabsWithPreview/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
@@ -84,6 +84,7 @@ export const Pages: CollectionConfig = {
                 FormBlock,
                 SummaryBlock,
                 StatsBlock,
+                TabsWithPreview,
               ],
               required: true,
             },
