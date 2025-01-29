@@ -33,8 +33,6 @@ export const TabsWithState: React.FC<Props> = ({ tabs, children }) => {
     setActiveTab(index)
   }
 
-  console.log('middle client?')
-
   return (
     <>
       <div className="flex justify-center gap-6 w-full bg-white rounded-full p-2">

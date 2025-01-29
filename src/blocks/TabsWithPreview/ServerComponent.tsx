@@ -3,20 +3,19 @@ import { CMSLink } from '@/components/Link'
 import { MoveRightIcon } from 'lucide-react'
 import { Media } from '@/payload-types'
 
-type CardProps = {
+type TabContentProps = {
   contentTitle: string
   contentDescription: string
   contentImage: Media | string
   link: any
 }
 
-export const Card: React.FC<CardProps> = ({
+export const TabContent: React.FC<TabContentProps> = ({
   contentTitle,
   contentDescription,
   contentImage,
   link,
 }) => {
-  console.log('child server?')
   return (
     <div className="grid grid-cols-3 gap-8 w-full h-full">
       <div className="relative w-full col-span-2">
