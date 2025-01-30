@@ -5,6 +5,7 @@ import { MAX_AMOUNT_OF_ITEMS } from './Component'
 export const BentoGrid: Block = {
   slug: 'bentoGrid',
   interfaceName: 'BentoGrid',
+  imageURL: '/assets/blocks/bento-grid.png',
   fields: [
     {
       name: 'items',
