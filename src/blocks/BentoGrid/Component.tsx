@@ -11,7 +11,12 @@ export const MAX_AMOUNT_OF_ITEMS = 6
 
 export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
   return (
-    <div className="container grid w-full grid-cols-3 grid-rows-6 gap-8">
+    <div
+      className={cn(
+        'container grid w-full grid-cols-3 grid-rows-6 gap-8',
+        `grid-rows-[repeat(${MAX_AMOUNT_OF_ITEMS},minmax(130px,1fr))]`,
+      )}
+    >
       {gridItems.map((item, index) => {
         const isOptionalGridItem = index === MAX_AMOUNT_OF_ITEMS - 1
         return (
