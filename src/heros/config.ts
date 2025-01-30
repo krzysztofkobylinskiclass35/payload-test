@@ -1,13 +1,6 @@
 import type { Field } from 'payload'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
-import { linkGroup } from '@/fields/linkGroup'
+import { titleWithHighlights } from '@/fields/titleWithHighlights'
 
 export const hero: Field = {
   name: 'hero',
@@ -16,8 +9,10 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
+      defaultValue: 'highImpact',
       label: 'Type',
+      required: true,
+      localized: true,
       options: [
         {
           label: 'None',
@@ -27,46 +22,23 @@ export const hero: Field = {
           label: 'High Impact',
           value: 'highImpact',
         },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
       ],
-      required: true,
     },
-    {
-      name: 'richText',
-      type: 'richText',
-      localized: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
-      }),
-      label: false,
-    },
-    linkGroup({
+    titleWithHighlights({
       overrides: {
-        maxRows: 2,
+        admin: {
+          condition: (_, { type }) => type !== 'none',
+        },
       },
     }),
     {
-      name: 'media',
+      name: 'image',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
       relationTo: 'media',
       required: true,
+      admin: {
+        condition: (_, { type }) => type !== 'none',
+      },
     },
   ],
   label: false,
