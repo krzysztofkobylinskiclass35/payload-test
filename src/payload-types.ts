@@ -703,7 +703,10 @@ export interface TabsWithPreview {
  * via the `definition` "BentoGrid".
  */
 export interface BentoGrid {
-  gridItems: {
+  /**
+   * The Bento Grid block provides a grid layout for showcasing content items. A minimum of 5 items is required for effective display, with an optional 6th item. The placement of items is based on their order: 1st - top left, 2nd - top right, 3rd - in the center, 4th - middle right, 5th - bottom left, 6th - bottom right.
+   */
+  items: {
     title?: string | null;
     description: string;
     image?: (string | null) | Media;
@@ -1117,7 +1120,7 @@ export interface TabsWithPreviewSelect<T extends boolean = true> {
  * via the `definition` "BentoGrid_select".
  */
 export interface BentoGridSelect<T extends boolean = true> {
-  gridItems?:
+  items?:
     | T
     | {
         title?: T;

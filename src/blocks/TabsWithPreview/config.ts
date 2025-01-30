@@ -17,6 +17,7 @@ export const TabsWithPreview: Block = {
           name: 'tabTitle',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'contentImage',
@@ -28,11 +29,13 @@ export const TabsWithPreview: Block = {
           name: 'contentTitle',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'contentDescription',
           type: 'text',
           required: true,
+          localized: true,
         },
         link({ appearances: false }),
       ],

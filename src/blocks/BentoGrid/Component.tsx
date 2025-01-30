@@ -9,7 +9,7 @@ type Props = Extract<Page['layout'][0], { blockType: 'bentoGrid' }> & BentoGridP
 
 export const MAX_AMOUNT_OF_ITEMS = 6
 
-export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
+export const BentoGrid: React.FC<Props> = ({ items }) => {
   return (
     <div
       className={cn(
@@ -17,7 +17,7 @@ export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
         `grid-rows-[repeat(${MAX_AMOUNT_OF_ITEMS},minmax(130px,1fr))]`,
       )}
     >
-      {gridItems.map((item, index) => {
+      {items.map((item, index) => {
         const isOptionalGridItem = index === MAX_AMOUNT_OF_ITEMS - 1
         return (
           <div
@@ -25,7 +25,7 @@ export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
             className={cn(
               'relative border border-background w-full h-full py-10 px-8 flex flex-col justify-between bg-white rounded-md shadow-md overflow-hidden',
               isOptionalGridItem && 'bg-heading',
-              getGridSize(index, gridItems.length),
+              getGridSize(index, items.length),
             )}
           >
             <div className="flex flex-col gap-8">
@@ -42,7 +42,7 @@ export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
                 )}
                 <p
                   className={cn(
-                    'relative z-10',
+                    'relative z-[1]',
                     isOptionalGridItem ? 'text-white' : 'text-heading',
                   )}
                 >
