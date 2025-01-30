@@ -11,6 +11,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SummaryBlock } from '@/blocks/SummaryBlock/Component'
 import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { TabsWithPreview } from '@/blocks/TabsWithPreview/Component'
+import { BentoGrid } from '@/blocks/BentoGrid/Component'
 
 import { TypedLocale } from 'payload'
 
@@ -23,6 +24,7 @@ const blockComponents = {
   summaryBlock: SummaryBlock,
   statsBlock: StatsBlock,
   tabsWithPreview: TabsWithPreview,
+  bentoGrid: BentoGrid,
 }
 
 export const RenderBlocks: React.FC<{

@@ -16,16 +16,19 @@ export const StatsBlock: Block = {
           name: 'category',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'cardName',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'description',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'bgImage',

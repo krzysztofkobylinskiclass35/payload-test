@@ -40,6 +40,7 @@ export const SummaryBlock: Block = {
       name: 'imagePosition',
       type: 'radio',
       defaultValue: 'right',
+      localized: true,
       options: [
         {
           label: 'On the left',

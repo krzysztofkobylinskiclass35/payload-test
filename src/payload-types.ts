@@ -131,6 +131,7 @@ export interface Page {
     | SummaryBlock
     | StatsBlock
     | TabsWithPreview
+    | BentoGrid
   )[];
   meta?: {
     title?: string | null;
@@ -690,16 +691,40 @@ export interface TabsWithPreview {
       } | null;
       url?: string | null;
       label: string;
-      /**
-       * Choose how the link should be rendered.
-       */
-      appearance?: ('default' | 'outline') | null;
     };
     id?: string | null;
   }[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'tabsWithPreview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BentoGrid".
+ */
+export interface BentoGrid {
+  /**
+   * The Bento Grid block provides a grid layout for showcasing content items. A minimum of 5 items is required for effective display, with an optional 6th item. The placement of items is based on their order: 1st - top left, 2nd - top right, 3rd - in the center, 4th - middle right, 5th - bottom left, 6th - bottom right.
+   */
+  items: {
+    title?: string | null;
+    description: string;
+    image?: (string | null) | Media;
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?: {
+        relationTo: 'pages';
+        value: string | Page;
+      } | null;
+      url?: string | null;
+      label: string;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'bentoGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -898,6 +923,7 @@ export interface PagesSelect<T extends boolean = true> {
         summaryBlock?: T | SummaryBlockSelect<T>;
         statsBlock?: T | StatsBlockSelect<T>;
         tabsWithPreview?: T | TabsWithPreviewSelect<T>;
+        bentoGrid?: T | BentoGridSelect<T>;
       };
   meta?:
     | T
@@ -1083,7 +1109,31 @@ export interface TabsWithPreviewSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
-              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BentoGrid_select".
+ */
+export interface BentoGridSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
             };
         id?: T;
       };
