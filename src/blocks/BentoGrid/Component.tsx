@@ -3,29 +3,11 @@ import { Media } from '@/components/Media'
 import type { Page, BentoGrid as BentoGridProps } from '@/payload-types'
 import { cn } from '@/utilities/ui'
 import { MoveRightIcon } from 'lucide-react'
+import { getGridSize, getImageStyles } from './helpers'
 
 type Props = Extract<Page['layout'][0], { blockType: 'bentoGrid' }> & BentoGridProps
 
 export const MAX_AMOUNT_OF_ITEMS = 6
-
-const getGridSize = (index: number, arrayLength: number) => {
-  switch (index) {
-    case 0:
-      return 'col-span-1 row-span-4'
-    case 1:
-      return 'col-span-2 row-span-2'
-    case 2:
-      return 'col-span-1 row-span-2'
-    case 3:
-      return arrayLength === MAX_AMOUNT_OF_ITEMS - 1
-        ? 'col-span-1 row-span-4'
-        : 'col-span-1 row-span-3'
-    case 4:
-      return 'col-span-2 row-span-2'
-    default:
-      return 'col-span-1 row-span-1'
-  }
-}
 
 export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
   return (
@@ -41,20 +23,33 @@ export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
               getGridSize(index, gridItems.length),
             )}
           >
-            <div className="flex flex-col gap-4">
-              {item.gridTitle && (
-                <h3
+            <div className="flex flex-col gap-8">
+              <div className={cn('flex flex-col gap-4', (index === 1 || index === 4) && 'w-3/5')}>
+                {item.title && (
+                  <h3
+                    className={cn(
+                      'text-xl font-medium',
+                      isOptionalGridItem ? 'text-white' : 'text-heading',
+                    )}
+                  >
+                    {item.title}
+                  </h3>
+                )}
+                <p
                   className={cn(
-                    'text-xl font-medium',
+                    'relative z-10',
                     isOptionalGridItem ? 'text-white' : 'text-heading',
                   )}
                 >
-                  {item.gridTitle}
-                </h3>
+                  {item.description}
+                </p>
+              </div>
+
+              {item.image && (
+                <div className={cn('align-center', getImageStyles(index))}>
+                  <Media resource={item.image} />
+                </div>
               )}
-              <p className={cn(isOptionalGridItem ? 'text-white' : 'text-heading')}>
-                {item.gridDescription}
-              </p>
             </div>
 
             <div
@@ -71,12 +66,6 @@ export const BentoGrid: React.FC<Props> = ({ gridItems }) => {
               />
               <MoveRightIcon size={16} />
             </div>
-
-            {item.gridImage && (
-              <div className="absolute max-w-[250px] -right-[10%] -bottom-[10%]">
-                <Media imgClassName="rounded-full" resource={item.gridImage} />
-              </div>
-            )}
           </div>
         )
       })}

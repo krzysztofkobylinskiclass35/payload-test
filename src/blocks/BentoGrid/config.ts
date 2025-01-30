@@ -14,17 +14,17 @@ export const BentoGrid: Block = {
       minRows: MAX_AMOUNT_OF_ITEMS - 1,
       fields: [
         {
-          name: 'gridTitle',
+          name: 'title',
           type: 'text',
           required: false,
         },
         {
-          name: 'gridDescription',
+          name: 'description',
           type: 'text',
           required: true,
         },
         {
-          name: 'gridImage',
+          name: 'image',
           type: 'upload',
           relationTo: 'media',
           required: false,

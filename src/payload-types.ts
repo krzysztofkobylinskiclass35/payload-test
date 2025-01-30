@@ -704,9 +704,9 @@ export interface TabsWithPreview {
  */
 export interface BentoGrid {
   gridItems: {
-    gridTitle?: string | null;
-    gridDescription: string;
-    gridImage?: (string | null) | Media;
+    title?: string | null;
+    description: string;
+    image?: (string | null) | Media;
     link: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
@@ -1120,9 +1120,9 @@ export interface BentoGridSelect<T extends boolean = true> {
   gridItems?:
     | T
     | {
-        gridTitle?: T;
-        gridDescription?: T;
-        gridImage?: T;
+        title?: T;
+        description?: T;
+        image?: T;
         link?:
           | T
           | {
