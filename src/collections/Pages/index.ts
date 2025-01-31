@@ -8,7 +8,7 @@ import { Content } from '@/blocks/Content/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { SummaryBlock } from '@/blocks/SummaryBlock/config'
-import { StatsBlock } from '@/blocks/StatsBlock/config'
+import { Cards } from '@/blocks/Cards/config'
 import { TabsWithPreview } from '@/blocks/TabsWithPreview/config'
 import { BentoGrid } from '@/blocks/BentoGrid/config'
 import { hero } from '@/heros/config'
@@ -86,7 +86,7 @@ export const Pages: CollectionConfig = {
                 Archive,
                 FormBlock,
                 SummaryBlock,
-                StatsBlock,
+                Cards,
                 TabsWithPreview,
                 BentoGrid,
               ],

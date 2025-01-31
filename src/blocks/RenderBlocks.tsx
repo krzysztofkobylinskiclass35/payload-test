@@ -9,7 +9,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SummaryBlock } from '@/blocks/SummaryBlock/Component'
-import { StatsBlock } from '@/blocks/StatsBlock/Component'
+import { Cards } from '@/blocks/Cards/Component'
 import { TabsWithPreview } from '@/blocks/TabsWithPreview/Component'
 import { BentoGrid } from '@/blocks/BentoGrid/Component'
 
@@ -22,7 +22,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   summaryBlock: SummaryBlock,
-  statsBlock: StatsBlock,
+  cards: Cards,
   tabsWithPreview: TabsWithPreview,
   bentoGrid: BentoGrid,
 }

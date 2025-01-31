@@ -1,11 +1,22 @@
 import { titleWithHighlights } from '@/fields/titleWithHighlights'
 import { Block } from 'payload'
 
-export const StatsBlock: Block = {
-  slug: 'statsBlock',
-  interfaceName: 'StatsBlock',
+export const Cards: Block = {
+  slug: 'cards',
+  interfaceName: 'Cards',
   fields: [
-    titleWithHighlights(),
+    {
+      name: 'includeHeading',
+      type: 'checkbox',
+      label: 'Include block heading',
+    },
+    titleWithHighlights({
+      overrides: {
+        admin: {
+          condition: (_, siblingData) => siblingData.includeHeading,
+        },
+      },
+    }),
     {
       name: 'cards',
       type: 'array',
@@ -13,13 +24,13 @@ export const StatsBlock: Block = {
       maxRows: 3,
       fields: [
         {
-          name: 'category',
+          name: 'title',
           type: 'text',
           required: true,
           localized: true,
         },
         {
-          name: 'cardName',
+          name: 'highlight',
           type: 'text',
           required: true,
           localized: true,
@@ -41,7 +52,7 @@ export const StatsBlock: Block = {
     },
   ],
   labels: {
-    singular: 'Stats Block',
-    plural: 'Stats Blocks',
+    singular: 'Cards',
+    plural: 'Cards',
   },
 }

@@ -87,8 +87,17 @@ export interface Page {
   hero: {
     type: 'none' | 'highImpact';
     title?: {
+      /**
+       * This appears as standard black text
+       */
       regularText: string;
+      /**
+       * This highlights the text in blue
+       */
       highlightedText: string;
+      /**
+       * This emphasizes accents with a vibrant yellow
+       */
       accentText?: string | null;
     };
     image?: (string | null) | Media;
@@ -100,7 +109,7 @@ export interface Page {
     | ArchiveBlock
     | FormBlock
     | SummaryBlock
-    | StatsBlock
+    | Cards
     | TabsWithPreview
     | BentoGrid
   )[];
@@ -575,8 +584,17 @@ export interface Form {
 export interface SummaryBlock {
   heading?: string | null;
   title: {
+    /**
+     * This appears as standard black text
+     */
     regularText: string;
+    /**
+     * This highlights the text in blue
+     */
     highlightedText: string;
+    /**
+     * This emphasizes accents with a vibrant yellow
+     */
     accentText?: string | null;
   };
   description: {
@@ -619,24 +637,34 @@ export interface SummaryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "StatsBlock".
+ * via the `definition` "Cards".
  */
-export interface StatsBlock {
-  title: {
+export interface Cards {
+  includeHeading?: boolean | null;
+  title?: {
+    /**
+     * This appears as standard black text
+     */
     regularText: string;
+    /**
+     * This highlights the text in blue
+     */
     highlightedText: string;
+    /**
+     * This emphasizes accents with a vibrant yellow
+     */
     accentText?: string | null;
   };
   cards: {
-    category: string;
-    cardName: string;
+    title: string;
+    highlight: string;
     description: string;
     bgImage: string | Media;
     id?: string | null;
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: 'statsBlock';
+  blockType: 'cards';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -644,8 +672,17 @@ export interface StatsBlock {
  */
 export interface TabsWithPreview {
   title: {
+    /**
+     * This appears as standard black text
+     */
     regularText: string;
+    /**
+     * This highlights the text in blue
+     */
     highlightedText: string;
+    /**
+     * This emphasizes accents with a vibrant yellow
+     */
     accentText?: string | null;
   };
   tabs: {
@@ -883,7 +920,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         summaryBlock?: T | SummaryBlockSelect<T>;
-        statsBlock?: T | StatsBlockSelect<T>;
+        cards?: T | CardsSelect<T>;
         tabsWithPreview?: T | TabsWithPreviewSelect<T>;
         bentoGrid?: T | BentoGridSelect<T>;
       };
@@ -1022,9 +1059,10 @@ export interface SummaryBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "StatsBlock_select".
+ * via the `definition` "Cards_select".
  */
-export interface StatsBlockSelect<T extends boolean = true> {
+export interface CardsSelect<T extends boolean = true> {
+  includeHeading?: T;
   title?:
     | T
     | {
@@ -1035,8 +1073,8 @@ export interface StatsBlockSelect<T extends boolean = true> {
   cards?:
     | T
     | {
-        category?: T;
-        cardName?: T;
+        title?: T;
+        highlight?: T;
         description?: T;
         bgImage?: T;
         id?: T;
