@@ -7,10 +7,12 @@ export const TitleWithHighlights: React.FC<{
     accentText?: string | null
   }
   className?: string
-}> = ({ title, className }) => {
+  includeLineBreak?: boolean
+}> = ({ title, className, includeLineBreak = false }) => {
   return (
-    <p className={cn('text-7xl font-medium', className)}>
-      <span className="text-heading">{title.regularText}</span>
+    <p className={cn('text-7xl font-extrabold', className)}>
+      <span className="text-heading font-medium">{title.regularText}</span>
+      {includeLineBreak && <br />}
       <span className="text-primary">{title.highlightedText}</span>
       {title.accentText && <span className="text-accent">{title.accentText}</span>}
     </p>

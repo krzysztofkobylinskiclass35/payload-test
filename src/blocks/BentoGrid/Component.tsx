@@ -14,7 +14,7 @@ export const BentoGrid: React.FC<Props> = ({ items }) => {
     <div
       className={cn(
         'container grid w-full grid-cols-3 grid-rows-6 gap-8',
-        `grid-rows-[repeat(${MAX_AMOUNT_OF_ITEMS},minmax(130px,1fr))]`,
+        `grid-rows-[repeat(6,minmax(130px,1fr))]`,
       )}
     >
       {items.map((item, index) => {
@@ -24,7 +24,7 @@ export const BentoGrid: React.FC<Props> = ({ items }) => {
             key={index}
             className={cn(
               'relative border border-background w-full h-full py-10 px-8 flex flex-col justify-between bg-white rounded-md shadow-md overflow-hidden',
-              isOptionalGridItem && 'bg-heading',
+              isOptionalGridItem ? 'bg-heading' : 'gap-4',
               getGridSize(index, items.length),
             )}
           >
